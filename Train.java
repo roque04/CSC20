@@ -3,14 +3,13 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Train { 
-    private Car front; //Start of the train.
+    private Car front; // start of the train
 
     public Train() { 
         this.front = null;
     }
-    public Train(String carFile) throws FileNotFoundException {
-        /* constructor: reads each train car details
-        from the file into the LinkedList */
+    public Train(String carFile) throws FileNotFoundException { /* constructor: reads each train car details from the file into the LinkedList */
+
         Scanner fileReader = null;
         fileReader = new Scanner(new File(carFile));
         String[] info;
@@ -22,59 +21,76 @@ public class Train {
 
             attach(info[0], Integer.valueOf(info[1]), info[2]);
         }
+
         fileReader.close();
 
     }
     public void detach(String factoryName){
-        /* remove a car given FactoryName, this
-        should delete the node in the LinkedList
-         */
+        /* remove a car given FactoryName, this should delete the node in the LinkedList */
+
         if(this.front == null){
             return;
         }
-        Car current = this.front, prev = null; //A current car is int, and a prev one aswell
 
-        if(current != null && current.factory.equalsIgnoreCase(factoryName)){ // if the current car is not null, and the first one happens to be the one the user is search ing for 
-            //insert code hereee// // the front of the train is set to a new affress, which detaches the current front.
+        Car current = this.front, prev = null; // A current car is int, and a prev one aswell
+
+        if(current != null && current.factory.equalsIgnoreCase(factoryName)){ /* if the current car is not null, and the first one happens to be the one the user is searching for */ 
+
+            // the front of the train is set to a new address, which detaches the current front.
+
+            this.front = current.next; // changes the front of the train
+
             return;
         }
         while(current != null && current.factory != factoryName){
-            //insert code here//  //prev car will equal the current
-            //insert code here// //current is changed to the next car in the list
+            
+            prev = current; // prev car will equal the current car
+            
+            current = current.next; // current is changed to the next car in the list
 
         }
-        //insert code here//  //if the train reaches the end of the list, then the car has been detached
+        if(current == null && prev == null){ // if the train reaches the end of the list, then the car has been detached
 
-        prev.next = current.next; //the next prev car is set to equal the current.next car
-        detach(factoryName); //Runs again until all of the cars with the factory name have been deleted
+            return;
+
+        }
+
+        prev.next = current.next; // the next prev car is set to equal the current.next car
+
+        detach(factoryName); // runs again until all of the cars with the factory name have been deleted
+
     }
-    public void attach(String factoryName, int stopNumber, String materialName){
-        // add a new car(node) to the LinkedList
-        if(this.front == null) {        //if the train is empty, the item is added auto..
-            this.front = new Car(factoryName, stopNumber, materialName); // A car object is created
+    public void attach(String factoryName, int stopNumber, String materialName){ /* add a new car(node) to the LinkedList */
+
+        if(this.front == null) { // if the train is empty, the item is added automatically
+
+            this.front = new Car(factoryName, stopNumber, materialName); // a car object is created
+
         } else {  // if the front is not empty
-            Car current = this.front; //A current Car object is declared
 
-            // insert code here //  //this while loop uterates through each item in the Train List
-            // insert code here // Current is charged to the next car in the list
+            Car current = this.front; // a current Car object is declared
 
-            current.next = new Car(factoryName, stopNumber, materialName); // a car is added to tje end of the list
+            Car i = current.next;
+
+            while( i != null){ // this while loop iterates through each item in the Train List
+
+                current = current.next; // current is changed to the next car in the list
+
+            }
+
+            current.next = new Car(factoryName, stopNumber, materialName); // a car is added to the end of the list
         }
-        //sort(); //sorts the train,, make a sort method
+        sort(); // sorts the train
 
     }
     public void search(String factoryName){
-        /* search for cars that correspond the given
-         * factory name. Not there may be more than
-         * one car so you may use helper method that
-         * follows
-         */
+        /* search for cars that correspond the given factory name. Not there may be more than one car so you may use helper method that follows */
 
          Car current = this.front;
 
          //Insert code here//
 
-         //If the front of tje list is empty, nothing happens
+         //If the front of the list is empty, nothing happens
 
          //this while loop iterates through the list
 
@@ -102,7 +118,7 @@ public class Train {
 
     public void displayTrainCars(){
         //display all the train cars in sorted order
-        //sort();
+        sort();
         Car current = this.front;
 
         if(this.front == null){
@@ -132,7 +148,37 @@ public class Train {
             //insert code here//  //the car is then attached to the train
         }
         System.out.println();
-        //sort();
+        sort();
     }
-    //public void sort(){}
+    public void sort(){
+        Car current = this.front, index = null;
+        int temp;
+        String tempFactory, tempMaterial;
+
+        if (this.front == null){
+            return;
+        } else {
+            while(current != null){
+                index = current.next;
+                while(index != null){
+                    if(current.stop>index.stop){
+                        temp=current.stop;
+                        tempFactory=current.factory;
+                        tempMaterial=current.material;
+
+                        current.stop=index.stop;
+                        current.factory=index.factory;
+                        current.material=index.material;
+
+                        index.stop=temp;
+                        index.factory=tempFactory;
+                        index.material=tempMaterial;
+
+                    }
+                    index=index.next;
+                }
+                current = current.next;
+            }
+        }
+    }
 }
