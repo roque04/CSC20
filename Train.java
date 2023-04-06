@@ -86,21 +86,38 @@ public class Train {
     public void search(String factoryName){
         /* search for cars that correspond the given factory name. Not there may be more than one car so you may use helper method that follows */
 
-         Car current = this.front;
+         Car current = this.front, index = null;
 
          //Insert code here//
 
-         //If the front of the list is empty, nothing happens
+        if (this.front == null){ // if the front of the list is empty, nothing happens
+            
+            return;
 
-         //this while loop iterates through the list
+        } else {
 
-         //if the factory name equals the parameter given factory name, it will be outputted
+            while(current != null){ //this while loop iterates through the list
+                
+                index = current.next;
+                
+                while(index != null){
+                    
+                    if(current.factory == factoryName){ // if the factory name equals the parameter given factory name, it will be outputted
+                        
+                        System.out.println(factoryName);
+                    }
 
-         //Current is changed to the next car in the list
+                }
+
+                current = current.next; // current is changed to the next car in the list
+            
+            }
+
+        }
 
     }
-    public List<String> getCars(String factoryName){
-        //material name lookup given factory name
+    public List<String> getCars(String factoryName){ /* material name lookup given factory name */
+        
         List<String> materials = new LinkedList<>(); // a list is created to hold all of the materials
 
         Car current = this.front; // a currrent car object is delcared
