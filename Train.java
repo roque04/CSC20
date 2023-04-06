@@ -122,27 +122,33 @@ public class Train {
 
         Car current = this.front; // a currrent car object is delcared
 
-        while(current.next != null){ //this while loop iterates tjrought the list
-            if(current.next.factory.equalsIgnoreCase(factoryName)){ 
-                //if the factory name equals the parameter given factoryname, it will be outputted
+        while(current.next != null){ // this while loop iterates through the list
 
-                //Insert code here// //if it is equal the cars materials are added to tje list
+            if(current.next.factory.equalsIgnoreCase(factoryName)){ 
+
+                System.out.println(factoryName); // if the factory name equals the parameter given factoryname, it will be outputted
+
+                materials.add(current.material); // if it is equal the cars materials are added to the list
             }
-            //Insert code here// //current is changed to the next car in the list
+            current = current.next; // current is changed to the next car in the list
         }
         return materials; //the list is then returned
     }
 
-    public void displayTrainCars(){
-        //display all the train cars in sorted order
+    public void displayTrainCars(){ /* display all the train cars in sorted orderb */
+
         sort();
+
         Car current = this.front;
 
         if(this.front == null){
-            System.out.println("\ntrain is empty\n");
+            System.out.println("\nThe train is empty!!!\n");
             return;
         }
         //insert code here// //while loop//
+        
+
+        
     }
     public void merge(String update){
         /* reads from update.txt and merges it with 
