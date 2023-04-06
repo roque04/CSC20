@@ -55,7 +55,7 @@ public class Train {
 
         }
 
-        prev.next = current.next; // the next prev car is set to equal the current.next car
+        prev = current.next; // the next prev car is set to equal the current.next car
 
         detach(factoryName); // runs again until all of the cars with the factory name have been deleted
 
@@ -70,9 +70,9 @@ public class Train {
 
             Car current = this.front; // a current Car object is declared
 
-            Car i = current.next;
+            
 
-            while( i != null){ // this while loop iterates through each item in the Train List
+            while( current.next != null){ // this while loop iterates through each item in the Train List
 
                 current = current.next; // current is changed to the next car in the list
 
@@ -87,8 +87,6 @@ public class Train {
         /* search for cars that correspond the given factory name. Not there may be more than one car so you may use helper method that follows */
 
          Car current = this.front, index = null;
-
-         //Insert code here//
 
         if (this.front == null){ // if the front of the list is empty, nothing happens
             
@@ -105,6 +103,8 @@ public class Train {
                     if(current.factory == factoryName){ // if the factory name equals the parameter given factory name, it will be outputted
                         
                         System.out.println(factoryName);
+
+                        System.out.println("The material in the car is "+ current.material.toString());
                     }
 
                 }
@@ -142,19 +142,26 @@ public class Train {
         Car current = this.front;
 
         if(this.front == null){
+
             System.out.println("\nThe train is empty!!!\n");
+
             return;
         }
-        //insert code here// //while loop//
-        
 
-        
+        System.out.println();
+
+        while(current != null){
+            
+            //System.out.println(current.factory.toString()+"     \t"+current.stop+"     \t"+current.material.toString());
+    
+            System.out.printf("%14s %10s %18s %n",  current.factory.toString(), current.stop, current.material.toString());
+
+            current = current.next;
+            
+        }
+
     }
-    public void merge(String update){
-        /* reads from update.txt and merges it with 
-         * the new train car. Merge two LinkedLists
-         * and should maintain the sorted order
-         */
+    public void merge(String update){ /* reads from update.txt and merges it with the new train car. Merge two LinkedLists and should maintain the sorted order */
         Scanner fileReader = null;
         String[] info = null;
         String displayNew = null;
@@ -166,11 +173,17 @@ public class Train {
         }
 
         while(fileReader.hasNextLine()){ //this while loops iterates through the file
-            //insert code here//  //the files line is split into the info array
-            
-            //insert code here//  //the car is then attached to the train
+
+            displayNew = fileReader.nextLine();
+
+            info = displayNew.split(","); //the files line is split into the info array
+
+            attach(info[0], Integer.valueOf(info[1]), info[2]); // the car is then attached to the train
+
         }
+
         System.out.println();
+
         sort();
     }
     public void sort(){
