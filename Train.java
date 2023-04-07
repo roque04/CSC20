@@ -42,7 +42,7 @@ public class Train {
 
             return;
         }
-        while(current != null && current.factory != factoryName){
+        while(current != null && current.factory.toString() != factoryName){
             
             prev = current; // prev car will equal the current car
             
@@ -86,7 +86,7 @@ public class Train {
     public void search(String factoryName){
         /* search for cars that correspond the given factory name. Not there may be more than one car so you may use helper method that follows */
 
-         Car current = this.front, index = null;
+         Car current = this.front;
 
         if (this.front == null){ // if the front of the list is empty, nothing happens
             
@@ -96,18 +96,13 @@ public class Train {
 
             while(current != null){ //this while loop iterates through the list
                 
-                index = current.next;
-                
-                while(index != null){
                     
-                    if(current.factory == factoryName){ // if the factory name equals the parameter given factory name, it will be outputted
+                    if(current.factory.equalsIgnoreCase(factoryName)){ // if the factory name equals the parameter given factory name, it will be outputted
                         
                         System.out.println(factoryName);
 
                         System.out.println("The material in the car is "+ current.material.toString());
                     }
-
-                }
 
                 current = current.next; // current is changed to the next car in the list
             
