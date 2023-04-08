@@ -18,8 +18,9 @@ public class Train {
         while(fileReader.hasNextLine()){
             line = fileReader.nextLine();
             info = line.split(",");
-
+            
             attach(info[0], Integer.valueOf(info[1]), info[2]);
+
         }
 
         fileReader.close();
@@ -32,7 +33,7 @@ public class Train {
             return;
         }
 
-        Car current = this.front, prev = null; // A current car is int, and a prev one aswell
+        Car current = this.front, prev = null; // A current car is intiatted , and a prev one aswell
 
         if(current != null && current.factory.equalsIgnoreCase(factoryName)){ /* if the current car is not null, and the first one happens to be the one the user is searching for */ 
 
@@ -42,22 +43,21 @@ public class Train {
 
             return;
         }
-        while(current != null && current.factory.toString() != factoryName){
+        while(current != null && current.factory.equalsIgnoreCase(factoryName)){ 
             
             prev = current; // prev car will equal the current car
-            
+
             current = current.next; // current is changed to the next car in the list
 
         }
-        if(current == null && prev == null){ // if the train reaches the end of the list, then the car has been detached
+        if(current == null){ // if the train reaches the end of the list, then the car has been detached
 
             return;
-
         }
 
         prev = current.next; // the next prev car is set to equal the current.next car
 
-        detach(factoryName); // runs again until all of the cars with the factory name have been deleted
+        //detach(factoryName); // runs again until all of the cars with the factory name have been deleted
 
     }
     public void attach(String factoryName, int stopNumber, String materialName){ /* add a new car(node) to the LinkedList */
@@ -101,11 +101,13 @@ public class Train {
                         
                         System.out.println(factoryName);
 
-                        System.out.println("The material in the car is "+ current.material.toString());
-                    }
+                        System.out.println("The material in the car is "+ current.material.toString()+"\n");
 
-                current = current.next; // current is changed to the next car in the list
-            
+                        break;
+                    } else {
+
+                        current = current.next; // current is changed to the next car in the list
+                    }
             }
 
         }
@@ -146,9 +148,7 @@ public class Train {
         System.out.println();
 
         while(current != null){
-            
-            //System.out.println(current.factory.toString()+"     \t"+current.stop+"     \t"+current.material.toString());
-    
+
             System.out.printf("%14s %10s %18s %n",  current.factory.toString(), current.stop, current.material.toString());
 
             current = current.next;

@@ -25,5 +25,4 @@ public class Car {
         this.material = m;
         this.next = next;
     }
-
 }
