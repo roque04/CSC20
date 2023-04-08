@@ -1,30 +1,31 @@
 /**
- * 
+ * @author Roque Busto
+ * date: 4/8/23
  */
 public class Car {
-    public String factory;
-    public int stop;
-    public String material;
-    Car next;
+    public String factory; // factory car name
+    public int stop; // the stop number for the car
+    public String material; // the material for the car
+    Car next; // the next car
 
 /**
- * 
+ * Default constructor
  */
     public Car(){
-        //default constructor
+    
         factory = "";
         stop = 0;
         material = "";
     }
 
     /**
-     * 
+     * Regular constructor sets next to null
      * @param fact
      * @param s
      * @param m
      */
     public Car(String fact, int s, String m){
-        //regular constructor sets next to null
+        
         this.factory = fact;
         this.stop = s;
         this.material = m;
@@ -33,14 +34,14 @@ public class Car {
     }
 
     /**
-     * 
+     * Regular constructor sets this.next=next;
      * @param fact
      * @param s
      * @param m
      * @param next
      */
     public Car(String fact, int s, String m, Car next){
-        //regular constructor sets this.next=next;
+        
         this.factory = fact;
         this.stop = s;
         this.material = m;

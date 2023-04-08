@@ -1,7 +1,7 @@
 import java.io.FileNotFoundException;
 import java.util.*;
 /**
- * 
+ * @author Roque Busto
  */
 public class TrainHelper {
 
@@ -15,7 +15,7 @@ public class TrainHelper {
     }
 
     /**
-     * 
+     * Displays a menu to ask the user what they want to do with the train.
      */
     public static void trainMenu(){
         menu = "\nTrain Depot Menu Options\n\n"+
@@ -66,7 +66,8 @@ public class TrainHelper {
     }
     
     /**
-     * 
+     * Merges the first LinkedList with a second one. The information is read from another file (in this case it's "update.txt.") and merged
+     * to create a single LinkedList. The LinkedList should still be sorted.
      */
     public static void merge(){
         System.out.println("\nDisplaying existing cars\n");
@@ -76,7 +77,7 @@ public class TrainHelper {
     }
 
     /**
-     * 
+     * Searches the LinkedList for the cars that correspond to the given factory name. This also give the cars' details.
      */
     public static void search(){
         System.out.println("\nEnter the Factor name you want to search: ");
@@ -86,7 +87,7 @@ public class TrainHelper {
     }
 
     /**
-     * 
+     * Removes a car from the LinkedList when it is given a FactoryName.
      */
     public static void delete(){
         System.out.println("\nPlease enter the Factory name you wish to Detach: ");
@@ -96,7 +97,7 @@ public class TrainHelper {
     }
 
     /**
-     * 
+     * Adds a new car node to the LinkedList. It needs a factoryName, stopNumber, and materialName to be added.
      */
     public static void createCar(){
         String factory,stop, material;

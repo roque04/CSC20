@@ -3,7 +3,8 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
- * 
+ * @author Roque Busto
+ * date: 4/8/23
  */
 public class Train { 
     private Car front; // start of the train
@@ -12,11 +13,11 @@ public class Train {
         this.front = null;
     }
     /**
-     * 
+     * Initiallizes a constructor for the Train class. It places all the items (train car details) from the file into a LinkedList.
      * @param carFile
      * @throws FileNotFoundException
      */
-    public Train(String carFile) throws FileNotFoundException { /* constructor: reads each train car details from the file into the LinkedList */
+    public Train(String carFile) throws FileNotFoundException {
 
         Scanner fileReader = null;
         fileReader = new Scanner(new File(carFile));
@@ -32,11 +33,10 @@ public class Train {
 
     }
     /**
-     * 
+     * Removes a car from the LinkedList when it is given a FactoryName.
      * @param factoryName
      */
     public void detach(String factoryName){
-        /* remove a car given FactoryName, this should delete the node in the LinkedList */
 
         if(this.front == null){
             return;
@@ -64,7 +64,7 @@ public class Train {
 
     }
     /**
-     * 
+     * Adds a new car node to the LinkedList. It needs a factoryName, stopNumber, and materialName to be added.
      * @param factoryName
      * @param stopNumber
      * @param materialName
@@ -89,7 +89,7 @@ public class Train {
 
     }
     /**
-     * 
+     * Searches the LinkedList for the cars that correspond to the given factory name. This also give the cars' details.
      * @param factoryName
      */
     public void search(String factoryName){
@@ -116,11 +116,11 @@ public class Train {
         }
     }
     /**
-     * 
+     * Returns the material's name when it is given a factory name.
      * @param factoryName
      * @return
      */
-    public List<String> getCars(String factoryName){ /* material name lookup given factory name */
+    public List<String> getCars(String factoryName){
         
         List<String> materials = new LinkedList<>(); // a list is created to hold all of the materials
 
@@ -139,9 +139,9 @@ public class Train {
 
     }
     /**
-     * 
+     * Displays all the train cars in a sorted order of factory name, stop number, and material name.
      */
-    public void displayTrainCars(){ /* display all the train cars in sorted orderb */
+    public void displayTrainCars(){
 
         sort();
 
@@ -160,10 +160,11 @@ public class Train {
         }
     }
     /**
-     * 
+     * Merges the first LinkedList with a second one. The information is read from another file (in this case it's "update.txt.") and merged
+     * to create a single LinkedList. The LinkedList should still be sorted.
      * @param update
      */
-    public void merge(String update){ /* reads from update.txt and merges it with the new train car. Merge two LinkedLists and should maintain the sorted order */
+    public void merge(String update){
         Scanner fileReader = null;
         String[] info = null;
         String displayNew = null;
@@ -185,7 +186,7 @@ public class Train {
 
     }
     /**
-     * 
+     * A sort method
      */
     public void sort(){
         Car current = this.front, index = null;
