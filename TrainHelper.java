@@ -1,6 +1,8 @@
 import java.io.FileNotFoundException;
 import java.util.*;
-
+/**
+ * 
+ */
 public class TrainHelper {
 
     private static String menu;
@@ -12,6 +14,9 @@ public class TrainHelper {
         
     }
 
+    /**
+     * 
+     */
     public static void trainMenu(){
         menu = "\nTrain Depot Menu Options\n\n"+
         "Enter A to ATTACH a train car\n"+
@@ -59,24 +64,40 @@ public class TrainHelper {
     }
         System.out.println("GOOD BYE!!!");
     }
+    
+    /**
+     * 
+     */
     public static void merge(){
         System.out.println("\nDisplaying existing cars\n");
         train.displayTrainCars();
         System.out.println("\nDisplaying the new cars\n");
         train.merge("update.txt");
     }
+
+    /**
+     * 
+     */
     public static void search(){
         System.out.println("\nEnter the Factor name you want to search: ");
         String factName = scan.nextLine();
         System.out.println();
         train.search(factName);
     }
+
+    /**
+     * 
+     */
     public static void delete(){
         System.out.println("\nPlease enter the Factory name you wish to Detach: ");
         String name = scan.nextLine();
         System.out.println();
         train.detach(name);
     }
+
+    /**
+     * 
+     */
     public static void createCar(){
         String factory,stop, material;
         int stopNum;
