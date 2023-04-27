@@ -1,6 +1,7 @@
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
+import java.util.*;
 /**
  * @author Roque Busto
  * Date: 4/27/2023
@@ -15,7 +16,17 @@ public class PhoneBook{
 
     }
     public PhoneBook(String phoneFile) throws FileNotFoundException {
-        
+        Scanner fileReader = null;
+        fileReader = new Scanner(new File(phoneFile));
+        String[] info;
+        String line;
+
+        while(fileReader.hasNextLine()){
+            line = fileReader.nextLine();
+            info = line.split(",");
+            contacts.add(info[0], info[1],Integer.valueOf(info[2]),Integer.valueOf(info[3]),info[4]);
+        }
+        fileReader.close();
     }
     /**
      * add contact to the array list
