@@ -12,7 +12,7 @@ public class PhoneDriver {
     private static PhoneBook phoneBook;
     
     public static void phoneMenu(){
-        menu = "\n Contact Book Menu Options \n\n"+
+        menu = "\n Phone Book Menu Options \n\n"+
         "P: Print Phonebook\n"+
         "B: Sort phone book by first name\n"+
         "L: Sort phone book by last name\n"+
