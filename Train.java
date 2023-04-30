@@ -186,20 +186,31 @@ public class Train {
 
     }
     /**
-     * A sort method
-     */
+ * This method sorts a linked list of Car objects in ascending order of their stop numbers. 
+ * If the list is empty, it returns without doing anything.
+ */
     public void sort(){
+        // Set the current node to the first node in the linked list,
+        // and initialize the index node to null.
         Car current = this.front, index = null;
+        // Declare variables to hold temporary values during swaps.
         int temp;
         String tempFactory, tempMaterial;
 
+        // Check if the linked list is empty.
         if (this.front == null){
+            // If it is, return without doing anything.
             return;
         } else {
+            // Otherwise, start sorting the list.
             while(current != null){
+                // Set the index node to the node after the current node.
                 index = current.next;
                 while(index != null){
+                    // Compare the stops of the current node and the index node.
                     if(current.stop>index.stop){
+                        // If the current node's stop is greater than the index node's stop,
+                        // swap their stop numbers, factory names, and material names.
                         temp=current.stop;
                         tempFactory=current.factory;
                         tempMaterial=current.material;
@@ -213,8 +224,10 @@ public class Train {
                         index.material=tempMaterial;
 
                     }
+                    // Move to the next node in the linked list.
                     index=index.next;
                 }
+                // Move to the next node in the linked list.
                 current = current.next;
             }
         }
