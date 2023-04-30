@@ -15,20 +15,7 @@ public class PhoneBook{
     public PhoneBook(){
         contacts = new ArrayList<>();
     }
-    /*public PhoneBook(String phoneFile) throws FileNotFoundException {
-        contacts = new ArrayList<>();
-        Scanner fileReader = null;
-        fileReader = new Scanner(new File(phoneFile));
-        String[] info;
-        String line;
 
-        while(fileReader.hasNextLine()){
-            line = fileReader.nextLine();
-            info = line.split(",");
-            contacts.add(info[0], info[1],Long.valueOf(info[2]),Long.valueOf(info[3]),info[4]);
-        }
-        fileReader.close();
-    }*/
 
     public PhoneBook(File file){
         contacts = new ArrayList<>();
@@ -48,6 +35,7 @@ public class PhoneBook{
             /*if(info.get(index).contains("-")){
                 info = "Zero";
             }*/
+
             Contact information = new Contact(info[0], info[1],Long.valueOf(info[2]),Long.valueOf(info[3]),info[4]);
 
             contacts.add(information);
@@ -55,6 +43,8 @@ public class PhoneBook{
         fileReader.close();
         
     }
+
+
     /**
      * add contact to the array list
      * @param c
@@ -62,15 +52,17 @@ public class PhoneBook{
     public void add(Contact c){
         contacts.add(c);
     }
+
+
     /**
      * returns the entire phone book as string
      */
     public String toString(){
-        return "";
+        return "Array of contacts: \n" + contacts;
     }
     /**
-     * Sort phonebook by first name
-     */
+    * Sorts the phonebook by first name using the bubble sort algorithm.
+    */
     public void bubbleSort(){
         for(int i = 0; i < contacts.size(); i++){ // for every contact in the list.
             for(int j = i+1; j < contacts.size(); j++){ // compare a contact to every other contact.
@@ -78,15 +70,18 @@ public class PhoneBook{
                 //it will be switched to be in its right place.
                 if(contacts.get(j).getFirstName().compareTo(contacts.get(i).getFirstName())<0){ 
 
-                    // add code here to perform the bubble sort
 
-                    
+                    Contact temp = contacts.get(i);
+                    contacts.set(i, contacts.get(j));
+                    contacts.set(j, temp);
 
                 
                 }
-            } // -1 0 1
+            } 
         }
     }
+
+
     /**
      * Sort phone book by last using selection sort algorithm
      */
@@ -99,21 +94,22 @@ public class PhoneBook{
                 String value = contacts.get(j).getLastName();
                 if(value.compareTo(smallest.getLastName()) < 0){ // if the last name is out of place.
 
-                    // add code here
-                    
+                    smallestIndex = j;
 
                 }
             }
-            if(smallestIndex != i){ // if the smallest index is not itseld, the contacts will switch places.
-
-                // add code here
+            if(smallestIndex != i){ // if the smallest index is not itself, the contacts will switch places.
 
 
-                // use the above comments as hints to craft your program
-
+                Contact temp = contacts.get(smallestIndex);
+                contacts.set(smallestIndex, contacts.get(i));
+                contacts.set(i, temp);
+                
             }
         }
     }
+
+    
 	/**
 	 * This function searches for a contact by last name using binary search.
 	 * @param lastName The last name of the contact to search for.
