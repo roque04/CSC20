@@ -80,6 +80,9 @@ public class PhoneBook{
 
                     // add code here to perform the bubble sort
 
+                    
+
+                
                 }
             } // -1 0 1
         }
@@ -97,6 +100,7 @@ public class PhoneBook{
                 if(value.compareTo(smallest.getLastName()) < 0){ // if the last name is out of place.
 
                     // add code here
+                    
 
                 }
             }
@@ -104,17 +108,51 @@ public class PhoneBook{
 
                 // add code here
 
+
                 // use the above comments as hints to craft your program
 
             }
         }
     }
-    /**
-     * Search contact by last name using binary search.
-     * @param name
-     * @return return true if contact is found else false.
-     */
-    public boolean binarySearch(String name){
-        return false;
-    }
+	/**
+	 * This function searches for a contact by last name using binary search.
+	 * @param lastName The last name of the contact to search for.
+	 * @return true if the contact is found, false otherwise.
+	 */
+	public boolean binarySearch(String lastName){
+		
+		if(this.contacts.size()>=0){
+			
+			if(this.contacts.size() < 14){
+				this.selectionSort();
+
+			}
+			// Variables for binary search.
+			int foundIndex, min = 0, max = contacts.size()-1;
+
+			// Keep searching until we have searched the entire array.
+			while (min <= max){
+				// Find the middle index of the array.
+				int middle = (min+max)/2;
+				// Compare the last name of the contact at the middle index to the last name we are searching for.
+				int current = lastName.compareToIgnoreCase(String.valueOf(contacts.get(middle).getLastName()));
+
+				// If the last names match, we have found the contact.
+				if(current == 0){
+					
+					System.out.println(contacts.get(middle).toString());
+					// Return true to indicate that the contact was found.
+					return true;
+				} else if (current < 0){
+					
+					max = middle - 1;
+				} else {
+					
+					min = middle + 1;
+				}
+			}
+		}
+		// If we have searched the entire array and the contact was not found, return false.
+		return false;
+	}
 }
