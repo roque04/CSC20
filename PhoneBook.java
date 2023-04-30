@@ -32,9 +32,14 @@ public class PhoneBook{
         int index = 0;
         while(fileReader.hasNextLine()){
             info = fileReader.nextLine().split(",");
-            /*if(info.get(index).contains("-")){
-                info = "Zero";
-            }*/
+            
+            if(info[2].contains("-")){
+                info[2] = "0000000000";
+                
+            }
+            if(info[3].contains("-")){
+                info[3] = "0000000000";
+            }
 
             Contact information = new Contact(info[0], info[1],Long.valueOf(info[2]),Long.valueOf(info[3]),info[4]);
 
@@ -57,8 +62,13 @@ public class PhoneBook{
     /**
      * returns the entire phone book as string
      */
-    public String toString(){
-        return "Array of contacts: \n" + contacts;
+    public void displayMethod(){
+        String contactInfo;
+
+        for(int i = 0; i < contacts.size(); i++){
+            contactInfo = contacts.get(i).getFirstName()+ "," + contacts.get(i).getLastName() + "," + contacts.get(i).getHomeNumber() + "," + contacts.get(i).getOfficeNumber() + "," + contacts.get(i).getEmailAddress() + "\n";
+            System.out.println(contactInfo);
+        }
     }
     /**
     * Sorts the phonebook by first name using the bubble sort algorithm.

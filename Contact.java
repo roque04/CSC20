@@ -65,9 +65,7 @@ public class Contact {
     }
     // toString //
     public String toString(){
-        return "";
-
-    //write this method using printf or if/else to format the output correctly.
+        return String.format("%14s %10s %18s %n", firstName, lastName, homeNumber, officeNumber, emailAddress);
 
     }
 }
