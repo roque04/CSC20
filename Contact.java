@@ -65,7 +65,7 @@ public class Contact {
     }
     // toString //
     public String toString(){
-        return String.format("%14s %10s %18s %n", firstName, lastName, homeNumber, officeNumber, emailAddress);
+        return String.format("%14s %10s %18s %10 %10 %n", firstName, lastName, homeNumber, officeNumber, emailAddress);
 
     }
 }

@@ -31,8 +31,9 @@ public class PhoneBook{
         String[] info;
         int index = 0;
         while(fileReader.hasNextLine()){
-            info = fileReader.nextLine().split(",");
+            info = fileReader.nextLine().split(","); //splits the line 
             
+            // Check if the home number or office number contain dashes ("-")
             if(info[2].contains("-")){
                 info[2] = "0000000000";
                 
@@ -43,8 +44,9 @@ public class PhoneBook{
 
             Contact information = new Contact(info[0], info[1],Long.valueOf(info[2]),Long.valueOf(info[3]),info[4]);
 
-            contacts.add(information);
+            contacts.add(information); //adds the contact info
         }
+        // close file/scanner
         fileReader.close();
         
     }
@@ -60,14 +62,13 @@ public class PhoneBook{
 
 
     /**
-     * returns the entire phone book as string
+     * Displays the entire phone book as a formatted string.
      */
     public void displayMethod(){
-        String contactInfo;
-
+        
+        System.out.println("       First Name     Last Name      Home Number       Office Number Email Address");
         for(int i = 0; i < contacts.size(); i++){
-            contactInfo = contacts.get(i).getFirstName()+ "," + contacts.get(i).getLastName() + "," + contacts.get(i).getHomeNumber() + "," + contacts.get(i).getOfficeNumber() + "," + contacts.get(i).getEmailAddress() + "\n";
-            System.out.println(contactInfo);
+            System.out.printf("%15s %15s %15s %18s %18s %n",  contacts.get(i).getFirstName(), contacts.get(i).getLastName(), contacts.get(i).getHomeNumber(), contacts.get(i).getOfficeNumber(), contacts.get(i).getEmailAddress());
         }
     }
     /**

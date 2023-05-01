@@ -65,6 +65,9 @@ public class PhoneDriver {
         }
         System.out.println("Good bye!");
     }
+    /**
+     * Adds a contact to the phonebook
+     */
     public static void add(){
         String firstName, lastName, emailAddress;
         long homeNumber, officeNumber;
@@ -89,10 +92,14 @@ public class PhoneDriver {
     public static void print(){
         phoneBook.displayMethod();
     }
+    /**
+     * Prompts the user to search for a contact, prints the contact if found, else prints "Contact not found"
+     */
     public static void search(){
         String lastName = scan.nextLine();
 
-        if(!phoneBook.binarySearch(lastName)){
+        //checks if the name exists in the phonebook using binary search
+        if(!phoneBook.binarySearch(lastName)){ 
             System.out.println("Contact not found");
         } else {
             System.out.println("Contact found");
